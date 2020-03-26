@@ -1,11 +1,54 @@
 # Escuela Colombiana de Ingeniería Julio Garavito - Arquitecturas de Software ARSW - Parcial Segundo Tercio
 
+## Autor 
+
+-	Juan David Navarro Jimenez
+
 ## Solución
 
+## Correr localmente
+
+Para correr el proyecto localmente, primero hay que asegurarse de que el proyecto esta corriendo en su editor, o en consola en la carpeta raiz del proyecto con el siguiente comando:
+
+```sh
+$ mvn spring-boot:run
+```
+
+La aplicacion deberia estar corriendo en [localhost:8080](http://localhost:8080/).
+
+## Documentacion arquitectura
+
+
+Para realizar el parcial se diseñó una API la cual consume datos de una Api de RapidAPI, para esto definimos el GET para todos los países que están reportados en la API con coronavirus y un GET para buscar información de las regiones de un país.
+
+Primero filtramos la información obtenida del API de COVID-19 Coronavirus Statistics en nuestra primera solicitud GET queremos obtener el nombre del país, cantidad de contagiados, cantidad de muertos y cantidad de personas recuperadas.
+
+Para esto podemos consultar nuestro api en el siguiente enlace https://arsw-parcial2.herokuapp.com/stats y tendremos algunas opciones como ver todo el conjunto de datos.
+
+![Captura](https://user-images.githubusercontent.com/44879884/77706280-ee76f000-6f8f-11ea-8e75-e5e51a4a4c54.PNG)
+
+O podemos ver con el formato JSON.
+
+![Captura2](https://user-images.githubusercontent.com/44879884/77706272-ec149600-6f8f-11ea-8400-119a7b2db710.PNG)
+
+Para consultar nuestro api por país ingresamos en el siguiente enlace https://arsw-parcial2.herokuapp.com/stats/China y tendremos algunas opciones como ver todo el conjunto de datos.
+
+![Captura3](https://user-images.githubusercontent.com/44879884/77706275-ecad2c80-6f8f-11ea-9819-7c4605f19d79.PNG)
+
+O podemos ver con el formato JSON.
+
+![Captura4](https://user-images.githubusercontent.com/44879884/77706276-ecad2c80-6f8f-11ea-8618-8c44317ccde7.PNG)
+
+En nuestra aplicación principal que se encuentra en el siguiente enlace https://arsw-parcial2.herokuapp.com/ Damos la información de todos los países que se encuentran registrados en la API con su nombre, cantidad de contagiados, cantidad de muertos y cantidad de personas recuperadas además tendremos la opción de un botón que nos dice “Ver” el cual permite ver en detalle las regiones del país seleccionado.
+
+![Captura5](https://user-images.githubusercontent.com/44879884/77706278-edde5980-6f8f-11ea-99ea-2f8525567567.PNG)
+
+![Captura6](https://user-images.githubusercontent.com/44879884/77706279-ee76f000-6f8f-11ea-9464-050f9753e864.PNG)
 ### Heroku
 
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://arsw-parcial2.herokuapp.com)
 
+**App Principal:** [`https://arsw-parcial2.herokuapp.com`](https://arsw-parcial2.herokuapp.com)
 
 **JSON con todos los paises reportados API FindAll:** [`https://arsw-parcial2.herokuapp.com/stats`](https://arsw-parcial2.herokuapp.com/stats)
 

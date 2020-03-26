@@ -51,8 +51,8 @@ var Module = (function () {
             );
         });
     };
-
-    return {
+    
+    return {        
         init: function () {
             api.getStatistics().then(function (data){
             table(data);});
