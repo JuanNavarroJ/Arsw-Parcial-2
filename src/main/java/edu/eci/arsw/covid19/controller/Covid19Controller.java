@@ -5,7 +5,8 @@
  */
 package edu.eci.arsw.covid19.controller;
 
-import edu.eci.arsw.covid19.model.Data;
+import edu.eci.arsw.covid19.model.Country;
+import edu.eci.arsw.covid19.model.Region;
 import edu.eci.arsw.covid19.service.Covid19Services;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * Clase Covid19Controller es la responsable del APICovid19.
  * @author Juan David
  */
 @RestController
@@ -29,10 +30,14 @@ public class Covid19Controller {
     //Atributos
     @Autowired
     Covid19Services c19s;
-
+    
+    /**
+     * Metodo que permite consultar una lista de paises con informacion de nombre,muertos,infectados y curados por pais en formato JSON.
+     * @return Retorna una lista de Paises con su informacion de nombre,muertos,infectados y curados en formato JSON.
+     */
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> getStatistics(){
-        List<Data> data = null;
+        List<Country> data = null;
         try {
             data = c19s.findAllCountries();
             return new ResponseEntity<>(data, HttpStatus.ACCEPTED);
@@ -42,9 +47,14 @@ public class Covid19Controller {
         }
     }
 
+    /**
+     * Metodo que permite consultar la informacion por pais algunos paises tienen informacion sobre algunas regiones.
+     * @param country   Es el pais el cual quieres consultar.
+     * @return  Retorna una lista con las regiones del pais.
+     */
     @RequestMapping(path = "/{country}",method = RequestMethod.GET)
     public ResponseEntity<?> getStatisticsByCountry(@PathVariable("country") String country){
-        List<Data> data = null;
+        List<Region> data = null;
         try {
             data = c19s.findCountriesByName(country);
             return new ResponseEntity<>(data, HttpStatus.ACCEPTED);

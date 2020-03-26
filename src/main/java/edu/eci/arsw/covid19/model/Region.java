@@ -6,53 +6,19 @@
 package edu.eci.arsw.covid19.model;
 
 /**
- * Clase Data representa el dato obtenido mediante el Json que nos ofrece RapidAPI.
+ * Clase Region que representa una Region de un pais.
  * @author Juan David
  */
-public class Data {
+public class Region {
     
     //Atributos
-    private String city;
-    private String province;
-    private String country;
-    private String lastUpdate;
+    
     private String keyId;
     private int confirmed;
     private int deaths;
     private int recovered;
 
-    public Data(){}
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(String lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public Region() {
     }
 
     public String getKeyId() {

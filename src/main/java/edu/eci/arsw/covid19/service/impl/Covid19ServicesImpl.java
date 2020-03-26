@@ -12,7 +12,9 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import edu.eci.arsw.covid19.model.Country;
 import edu.eci.arsw.covid19.model.Data;
+import edu.eci.arsw.covid19.model.Region;
 import edu.eci.arsw.covid19.service.Covid19Services;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,7 @@ import org.json.JSONArray;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * Clase Covid19ServicesImpl que realiza los servicios del API.
  * @author Juan David
  */
 @Service
@@ -31,7 +33,7 @@ public class Covid19ServicesImpl implements Covid19Services {
     private Gson gson;
 
     @Override
-    public List<Data> findAllCountries() {
+    public List<Country> findAllCountries() {
         gson = new Gson();
         List<Data> data = null;
         HttpResponse<JsonNode> response = null;
@@ -50,8 +52,8 @@ public class Covid19ServicesImpl implements Covid19Services {
         }.getType());
 
         String countryName = null;
-        List<Data> res = new ArrayList<Data>();
-        Data country = null;
+        List<Country> res = new ArrayList<Country>();
+        Country country = null;
         int muertes = 0;
         int infectados = 0;
         int curados = 0;
@@ -64,14 +66,14 @@ public class Covid19ServicesImpl implements Covid19Services {
                 infectados += d.getConfirmed();
                 curados += d.getRecovered();
             } else {
-                country = new Data();
+                country = new Country();
                 country.setCountry(countryName);
                 country.setDeaths(muertes);
                 country.setConfirmed(infectados);
                 country.setRecovered(curados);
 
                 boolean band = false;
-                for (Data r : res) {
+                for (Country r : res) {
                     if (r.getCountry().equals(country.getCountry())) {
                         r.setDeaths(r.getDeaths() + country.getDeaths());
                         r.setConfirmed(r.getConfirmed() + country.getConfirmed());
@@ -96,9 +98,9 @@ public class Covid19ServicesImpl implements Covid19Services {
     }
 
     @Override
-    public List<Data> findCountriesByName(String country) {
+    public List<Region> findCountriesByName(String country) {
         gson = new Gson();
-        List<Data> data = null;
+        List<Region> data = null;
         HttpResponse<JsonNode> response = null;
         try {
             response = Unirest.get("https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=" + country)
@@ -111,7 +113,7 @@ public class Covid19ServicesImpl implements Covid19Services {
 
         gson = new GsonBuilder().create();
         JSONArray stats = response.getBody().getObject().getJSONObject("data").getJSONArray("covid19Stats");
-        data = gson.fromJson(stats.toString(), new TypeToken<List<Data>>() {
+        data = gson.fromJson(stats.toString(), new TypeToken<List<Region>>() {
         }.getType());
         return data;
     }
