@@ -1,4 +1,4 @@
-package edu.eci.arsw.Covid19;
+package edu.eci.arsw.covid19;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

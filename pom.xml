@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.eci.arsw</groupId>
-	<artifactId>Covid-19</artifactId>
+	<artifactId>covid19</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Covid-19</name>
+	<name>covid19</name>
 	<description>JUAN-NAVARRO-ARSW-T2</description>
 
 	<properties>
