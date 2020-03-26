@@ -47,6 +47,27 @@ public class Covid19ServicesImpl implements Covid19Services{
         gson = new GsonBuilder().create();
         JSONArray allStats = response.getBody().getObject().getJSONObject("data").getJSONArray("covid19Stats");
         data = gson.fromJson(allStats.toString(),new TypeToken<List<Data>>(){}.getType());
+        
+        String countryName = null;
+        List<Data> res = null;
+        Data country = null;
+        int muertes = 0;
+        int infectados = 0;
+        int curados = 0;
+        for(Data d:data){
+            if(countryName == null){
+                countryName = d.getCountry();
+                country = new Data();
+                country.setCountry(countryName);
+                
+            }if(countryName.equals(d.getCountry())){
+                muertes += d.getDeaths();
+                infectados += d.getConfirmed();
+                curados += d.getRecovered();
+            }else{
+                
+            }         
+        }
         return data;
     }
     
