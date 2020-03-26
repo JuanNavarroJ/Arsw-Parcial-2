@@ -17,6 +17,36 @@ var Module = (function () {
                 "<td>" +
                 country.recovered +
                 "</td>" +
+                "<td>" +
+                "<form><button class='btn btn-dark' type='button' onclick='Module.getCountries(\"" +
+            country.country+ "\""+ ")' > Ver </button></form>"+
+                "</td> " +
+                "</tr>"
+            );
+        });
+        $("button").click(function() {
+        $('html,body').animate({
+            scrollTop: $(".secundaria").offset().top},
+            'slow');
+    });
+    };
+    
+    function tableCountry(result) {
+        $("#statsRegion > tbody").empty();
+        result.map(function (region) {
+            $("#statsRegion > tbody").append(
+                "<tr> <td>" +
+                region.keyId +
+                "</td>" +
+                "<td>" +
+                region.deaths +
+                "</td> " +
+                "<td>" +
+                region.confirmed +
+                "</td> " +
+                "<td>" +
+                region.recovered +
+                "</td>" +
                 "</tr>"
             );
         });
@@ -26,6 +56,10 @@ var Module = (function () {
         init: function () {
             api.getStatistics().then(function (data){
             table(data);});
+        },
+        getCountries: function (name) {
+            api.getCountries(name).then(function (data){
+            tableCountry(data);});
         }
 
     };

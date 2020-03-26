@@ -7,9 +7,9 @@
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://arsw-parcial2.herokuapp.com)
 
 
-**Enlace API FindAll:** [`https://arsw-parcial2.herokuapp.com/stats`](https://arsw-parcial2.herokuapp.com/stats)
+**JSON con todos los paises reportados API FindAll:** [`https://arsw-parcial2.herokuapp.com/stats`](https://arsw-parcial2.herokuapp.com/stats)
 
-**Ejemplo API FindCountry:** [`https://arsw-parcial2.herokuapp.com/stats/Colombia`](https://arsw-parcial2.herokuapp.com/stats/Colombia)
+**JSON con todas las regiones de un pais reportado API FindCountry:** [`https://arsw-parcial2.herokuapp.com/stats/China`](https://arsw-parcial2.herokuapp.com/stats/China)
 
 ### Despliegue continuo (CircleCI)
 
